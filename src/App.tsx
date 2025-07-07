@@ -1334,7 +1334,7 @@ const App = () => {
               checked={useLimitedFacilities}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUseLimitedFacilities(e.target.checked)}
             />
-            <label htmlFor="useLimitedFacilities" className="ml-2 block text-base font-medium text-gray-700">
+            <label htmlFor={`useLimitedFacilities`} className="ml-2 block text-base font-medium text-gray-700">
               I have limited cooking facilities
             </label>
           </div>
@@ -1470,44 +1470,43 @@ const App = () => {
                     </ul>
                   )}
                 </div>
-                <div className="mt-4 flex justify-between items-center">
-                  <div className="flex space-x-2">
-                    {editingMealIndex !== index && ( // Only show edit button if not already editing
-                      <button
-                        onClick={() => startEditingMeal(index, dayPlan.meals.dinner)}
-                        className="text-sm text-gray-500 hover:text-gray-700 font-medium px-3 py-1 rounded-lg border border-gray-300 hover:bg-gray-100 transition duration-200"
-                      >
-                        Edit Meal
-                      </button>
+                {/* Button Container - Adjusted for better spacing and wrapping */}
+                <div className="mt-4 flex flex-wrap justify-center gap-2"> {/* Changed from space-x-2 to gap-2 and added flex-wrap, justify-center */}
+                  {editingMealIndex !== index && ( // Only show edit button if not already editing
+                    <button
+                      onClick={() => startEditingMeal(index, dayPlan.meals.dinner)}
+                      className="text-sm text-gray-500 hover:text-gray-700 font-medium px-3 py-1 rounded-lg border border-gray-300 hover:bg-gray-100 transition duration-200"
+                    >
+                      Edit Meal
+                    </button>
+                  )}
+                  <button
+                    onClick={() => fetchMealDetails(dayPlan.meals.dinner, dayPlan.people, index)}
+                    className="text-sm text-blue-500 hover:text-blue-700 font-medium px-3 py-1 rounded-lg border border-blue-300 hover:bg-blue-100 transition duration-200"
+                    disabled={!dayPlan.meals.dinner.trim()} // Disable if no meal is set
+                  >
+                    Get Recipe
+                  </button>
+                  <button
+                    onClick={() => regenerateDinnerForDay(dayPlan.day, index, dayPlan.people)}
+                    className="text-sm bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-600 transition duration-200 flex items-center"
+                    disabled={regeneratingDay === dayPlan.day}
+                  >
+                    {regeneratingDay === dayPlan.day ? (
+                      <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                    ) : (
+                      'Regenerate'
                     )}
-                    <button
-                      onClick={() => fetchMealDetails(dayPlan.meals.dinner, dayPlan.people, index)}
-                      className="text-sm text-blue-500 hover:text-blue-700 font-medium px-3 py-1 rounded-lg border border-blue-300 hover:bg-blue-100 transition duration-200"
-                      disabled={!dayPlan.meals.dinner.trim()} // Disable if no meal is set
-                    >
-                      Get Recipe
-                    </button>
-                    <button
-                      onClick={() => regenerateDinnerForDay(dayPlan.day, index, dayPlan.people)}
-                      className="text-sm bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-600 transition duration-200 flex items-center"
-                      disabled={regeneratingDay === dayPlan.day}
-                    >
-                      {regeneratingDay === dayPlan.day ? (
-                        <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
-                      ) : (
-                        'Regenerate'
-                      )}
-                    </button>
-                    <button
-                      onClick={() => clearMealForDay(index)}
-                      className="text-sm bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition duration-200"
-                    >
-                      Clear
-                    </button>
-                  </div>
+                  </button>
+                  <button
+                    onClick={() => clearMealForDay(index)}
+                    className="text-sm bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition duration-200"
+                  >
+                    Clear
+                  </button>
                 </div>
               </div>
             ))}
