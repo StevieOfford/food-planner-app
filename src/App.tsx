@@ -1846,6 +1846,9 @@ const App = () => {
           </div>
         </div>
       )}
+      <footer className="mt-12 text-center text-gray-600 text-sm">
+        <p>Created by Stephen Offord</p>
+      </footer>
     </div>
   );
 };
