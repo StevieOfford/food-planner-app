@@ -1275,7 +1275,7 @@ const App = () => {
       {/* Header */}
       <header className="w-full max-w-4xl text-center mb-8">
         <h1 className="text-4xl md:text-5xl font-extrabold text-purple-700 mb-2 drop-shadow-lg">
-          Dinner Plan
+          Dinner Mate
         </h1>
         <p className="text-lg text-gray-600">
           Generate your personalized 7-day dinner plan and get recipes!
