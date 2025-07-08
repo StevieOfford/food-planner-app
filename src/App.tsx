@@ -5,7 +5,7 @@ const fetchDishImage = async (dishName: string, retries: number = 5, delay: numb
   const prompt = `A delicious, high-quality, professional food photograph of ${dishName}, presented beautifully on a plate, suitable for a recipe card. Focus on the food, with a clean background.`;
   const payload = { instances: { prompt: prompt }, parameters: { "sampleCount": 1 } };
   // API Key for Imagen API calls - inserted by AI
-  const apiKey = "AIzaSyC-x-sDIQ9V3W5f1QzNVsbWaU42TDuWbn4";
+  const apiKey = process.env.REACT_APP_GEMINI_API_KEY || ""; // Use empty string fallback for local development if not set
   const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${apiKey}`;
 
   for (let i = 0; i < retries; i++) {
@@ -383,7 +383,7 @@ const App = () => {
       };
 
       // API Key for Gemini API calls - inserted by AI
-      const apiKey = "AIzaSyC-x-sDIQ9V3W5f1QzNVsbWaU42TDuWbn4";
+      const apiKey = process.env.REACT_APP_GEMINI_API_KEY || ""; // Use empty string fallback for local development if not set
       const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
       const response = await fetch(apiUrl, {
@@ -597,7 +597,7 @@ const App = () => {
       };
 
       // API Key for Gemini API calls - inserted by AI
-      const apiKey = "AIzaSyC-x-sDIQ9V3W5f1QzNVsbWaU42TDuWbn4";
+      const apiKey = process.env.REACT_APP_GEMINI_API_KEY || ""; // Use empty string fallback for local development if not set
       const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
       const response = await fetch(apiUrl, {
@@ -691,7 +691,7 @@ const App = () => {
       };
 
       // API Key for Gemini API calls - inserted by AI
-      const apiKey = "AIzaSyC-x-sDIQ9V3W5f1QzNVsbWaU42TDuWbn4";
+     const apiKey = process.env.REACT_APP_GEMINI_API_KEY || ""; // Use empty string fallback for local development if not set
       const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
       const response = await fetch(apiUrl, {
@@ -857,7 +857,7 @@ const App = () => {
       };
 
       // API Key for Gemini API calls - inserted by AI
-      const apiKey = "AIzaSyC-x-sDIQ9V3W5f1QzNVsbWaU42TDuWbn4";
+     const apiKey = process.env.REACT_APP_GEMINI_API_KEY || ""; // Use empty string fallback for local development if not set
       const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
       const response = await fetch(apiUrl, {
@@ -989,7 +989,7 @@ const App = () => {
       };
 
       // API Key for Gemini API calls - inserted by AI
-      const apiKey = "AIzaSyC-x-sDIQ9V3W5f1QzNVsbWaU42TDuWbn4";
+      const apiKey = process.env.REACT_APP_GEMINI_API_KEY || ""; // Use empty string fallback for local development if not set
       const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
       const response = await fetch(apiUrl, {
@@ -1077,7 +1077,7 @@ const App = () => {
       };
 
       // API Key for Gemini API calls - inserted by AI
-      const apiKey = "AIzaSyC-x-sDIQ9V3W5f1QzNVsbWaU42TDuWbn4";
+     const apiKey = process.env.REACT_APP_GEMINI_API_KEY || ""; // Use empty string fallback for local development if not set
       const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
       const response = await fetch(apiUrl, {
